@@ -17,17 +17,17 @@
 }
 
 .chatbox_header {
-	background: #f99d39;
+	background: #4d68a2;
 }
 
 /* Chat box */
 .chatboxhead {
 	color: #ffffff;
-	background-color: #f99d39;
+	background-color: #4d68a2;
 }
 
 .chatboxblink {
-	background-color: #FF7000;
+	background-color: #6d84b4;
 }
 
 .chatboxcontent {
@@ -42,12 +42,11 @@
 }
 
 .chatboxtextarea {
-	border: 1px solid #eeeeee;
+	border: none;
 }
 
 .chatboxtextareaselected {
 	outline: 0;
-	border: 2px solid #f99d39;
 }
 
 .chatboxmessage {
@@ -79,7 +78,7 @@
 }
 
 #chat_friends_list ul li:hover {
-	background: #ccc;
+	background: #dfe3ed;
 }
 
 #chat_friends_list a {

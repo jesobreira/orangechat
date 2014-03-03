@@ -19,8 +19,8 @@ body {
 </style>
 
 <!-- start orangechat code -->
-<link type="text/css" rel="stylesheet" media="all" href="orangechat/orangecss.php" />
-<script type="text/javascript" src="orangechat/orangejs.php"></script>
+<link type="text/css" rel="stylesheet" media="all" href="../orangechat/orangecss.php" />
+<script type="text/javascript" src="../orangechat/orangejs.php"></script>
 <!-- end orangechat code -->
 
 </head>

@@ -24,6 +24,8 @@
 .chatboxhead {
 	color: #ffffff;
 	background-color: #f99d39;
+	border-right:1px solid #f99d39;
+	border-left:1px solid #f99d39;
 }
 
 .chatboxblink {
