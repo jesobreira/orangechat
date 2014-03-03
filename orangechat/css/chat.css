@@ -1,0 +1,153 @@
+/* Chatbar */
+
+.chat_bar {
+	
+}
+.chat_bar_active {
+	
+}
+#chat_bar {
+	z-index:9;
+	height:20px;
+	width:200px;
+	position:fixed;
+	border: #ccc 1px solid;
+	border-width: 1px 1px 0 1px;
+	bottom: 0;
+	right:60px;
+	text-align: left;
+	cursor: pointer;
+}
+#chat_bar_content {
+	padding-left: 20px;
+	height:14px;
+	font-weight: bold;
+	font-size: 11px;
+	padding-top:3px;
+	width:170px;
+}
+#chat_list {
+	z-index:10;
+	height:auto;
+	width:200px;
+	background: #eeeeee;
+	border: #ccc 1px solid;
+	border-width: 1px 1px 0 1px;
+	position:fixed;
+	bottom: 19px;
+	right:60px;
+	display:none;
+	text-align: left;
+	overflow:hidden;
+}
+#chat_list_content {
+	overflow: hidden;
+}
+
+.chatbox_header {
+	padding:3px;
+	color:white;
+	font-weight:bold
+}
+
+
+/* Chat boxes */
+
+.chatbox {
+	position: fixed;
+	position:expression("absolute");
+	width: 225px;
+	display:none;
+}
+
+.chatboxhead {
+	padding:7px;
+
+	border-right:1px solid #f99d39;
+	border-left:1px solid #f99d39;
+}
+
+.chatboxblink {
+	
+}
+
+.chatboxcontent {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #333333;
+	height:200px;
+	width:209px;
+	overflow-y:auto;
+	overflow-x:auto;
+	padding:7px;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-bottom:1px solid #eeeeee;
+	background-color: #ffffff;
+	line-height: 1.3em;
+}
+
+.chatboxinput {
+	padding: 5px;
+}
+
+.chatboxtextarea {
+	width: 206px;
+	height:20px;
+	padding:3px 0pt 3px 3px;
+	margin: 1px;
+	overflow:hidden;
+	resize: none;
+	font-family: Verdana,Arial,Sans-serif;
+	font-size: 12px;
+}
+
+.chatboxtextareaselected {
+	margin:0;
+}
+
+.chatboxmessage {
+	margin-left:1em;
+}
+
+.chatboxinfo {
+	margin-left:-1em;
+	color:#666666;
+
+}
+
+.chatboxmessagefrom {
+	margin-left:-1em;
+}
+
+.chatboxmessagecontent {
+}
+
+.chatboxoptions {
+	float: right;
+}
+
+.chatboxoptions a {
+	text-decoration: none;
+	color: white;
+	font-weight:bold;
+	font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+}
+
+.chatboxtitle {
+	float: left;
+}
+
+#chat_friends_list ul {
+	padding: 0;
+}
+
+#chat_friends_list ul li {
+	list-style: none;
+	padding: 6px;
+	margin: 0px;
+}
+
+#chat_friends_list a {
+	text-decoration: none;
+}
