@@ -1,12 +1,10 @@
 OrangeChat
 ==========
 Simple PHP/Javascript Facebook-like chat widget
-Based in the chat box by [Anant Garg](anantgarg.com)
-Integration, themes support and translation support by [Jefrey S. Santos](jefrey.sobreira@gmail.com)
 
 How to install
 -------------
-1. Run the following code to your database:
+Run the following code to your database:
 ```sql
 DROP TABLE IF EXISTS `chat`;
 CREATE TABLE `chat` (
@@ -25,25 +23,24 @@ CREATE TABLE `chat_lastactivity` (
   `time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-```
-2. Copy "orangechat" folder to your webpath.
 
-3. Add the following lines on the HEAD of all the pages that you want to display the chat:
+Copy "orangechat" folder to your webpath.
+
+Add the following lines on the HEAD of all the pages that you want to display the chat:
 ```html
 <!-- start orangechat code -->
 <link type="text/css" rel="stylesheet" media="all" href="../orangechat/orangecss.php" />
 <script type="text/javascript" src="../orangechat/orangejs.php"></script>
 <!-- end orangechat code -->
-```
-4. In the "orangechat" folder, configure the "config.inc.php" file.
-Also, you may want to edit "integration.php" to make it compatible to your code. Don't do it if you're going to run the demo.
-Don't worry. Everything is explained.
 
-*That's all!*
+In the "orangechat" folder, configure the "config.inc.php" file.
+Also, you may want to edit "integration.php" to make it compatible to your code. Don't do it if you're going to run the demo.
+
+That's all!
 
 Running the example
 -----------------
-1. After installing OrangeChat (following the steps above), run the following SQL queries:
+After installing OrangeChat (following the steps above), run the following SQL queries:
 ```sql
 SET NAMES utf8;
 SET foreign_key_checks = 0;
@@ -72,32 +69,5 @@ INSERT INTO `sample_users` (`id`, `username`, `nome`, `picture`) VALUES
 (1,	'admin',	'Administrador',	'admin.jpg'),
 (2,	'test',	'Test',	'test.jpg'),
 (3,	'other',	'Other',	'other.jpg');
-```
-2. Then open http://yourserver/orangechatpath/sample in two different browsers.
 
-Translating OrangeChat
---------------------
-1. Inside the "orangechat" folder, enter "lang" folder and copy the "en.xml" file to "(your_language_iso_code).xml".
-2. Translate the strings in the XML tags. There is just a few. Don't worry!
-3. Enable your language in config.inc.php folder.
-
-Creating themes
---------------
-1. In the "themes" folder, copy any of the folders and rename it to your theme name.
-2. Edit the style.css file as you want.
-3. Edit the chat.gif file. It's the icon that will appear on the chat bar.
-4. Optionally, edit the loading.gif image. It's the animation that appears while loading the online users list. If this file doesn't exist, the default one, in the "images" folder, will be used.
-
-Files schema
------------
-| File | Description |
-| ---- | ----------- |
-| index.php | Does nothing, for while. |
-| chat.php | Controls the messages log, message sending and reading. |
-| chatbar.php | Gets the online users list. |
-| common.php | Common variables, includes and functions. |
-| config.inc.php | App configuration. |
-| integrated_functions.php | More functions that aren't required to edit. |
-| integration.php | Functions and variables to integrate OrangeChat to your app. |
-| orangecss.php | Controls the stylesheets. |
-| orangejs.php | Controls the Javascripts. |
+Then open http://yourserver/orangechatpath/sample in two different browsers.
