@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Orangechat by jesobreira</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Orangechat</h1>
+        <p>Simple PHP/Javascript Facebook-like chat widget</p>
+
+        <p class="view"><a href="https://github.com/jesobreira/orangechat">View the Project on GitHub <small>jesobreira/orangechat</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jesobreira/orangechat/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jesobreira/orangechat/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jesobreira/orangechat">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="orangechat" class="anchor" href="#orangechat"><span class="octicon octicon-link"></span></a>OrangeChat</h1>
+
+<p>Simple PHP/Javascript Facebook-like chat widget
+Based in the chat box by <a href="http://anantgarg.com">Anant Garg</a>
+Integration, themes support and translation support by <a href="mailto:jefrey.sobreira@gmail.com">Jefrey S. Santos</a></p>
+
+<h2>
+<a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
+
+<ol>
+<li>Run the following code to your database:</li>
+</ol><div class="highlight highlight-sql"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">chat</span><span class="o">`</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">chat</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="o">`</span><span class="k">from</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="o">`</span><span class="k">to</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">message</span><span class="o">`</span> <span class="nb">text</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">sent</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">'0000-00-00 00:00:00'</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">recd</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">'0'</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">chat_lastactivity</span><span class="o">`</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">chat_lastactivity</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="o">`</span><span class="k">user</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">time</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+</pre></div>
+
+<ol>
+<li><p>Copy "orangechat" folder to your webpath.</p></li>
+<li><p>Add the following lines on the HEAD of all the pages that you want to display the chat:</p></li>
+</ol><div class="highlight highlight-html"><pre><span class="c">&lt;!-- start orangechat code --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="na">href=</span><span class="s">"../orangechat/orangecss.php"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"../orangechat/orangejs.php"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- end orangechat code --&gt;</span>
+</pre></div>
+
+<ol>
+<li>In the "orangechat" folder, configure the "config.inc.php" file.
+Also, you may want to edit "integration.php" to make it compatible to your code. Don't do it if you're going to run the demo.
+Don't worry. Everything is explained.</li>
+</ol><p><em>That's all!</em></p>
+
+<h2>
+<a name="running-the-example" class="anchor" href="#running-the-example"><span class="octicon octicon-link"></span></a>Running the example</h2>
+
+<ol>
+<li>After installing OrangeChat (following the steps above), run the following SQL queries:</li>
+</ol><div class="highlight highlight-sql"><pre><span class="k">SET</span> <span class="k">NAMES</span> <span class="n">utf8</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">foreign_key_checks</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">time_zone</span> <span class="o">=</span> <span class="s1">'-03:00'</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">sql_mode</span> <span class="o">=</span> <span class="s1">'NO_AUTO_VALUE_ON_ZERO'</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">sample_friends</span><span class="o">`</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">sample_friends</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">user1</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">user2</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">confirmed</span><span class="o">`</span> <span class="nb">char</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sample_friends</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">user1</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">user2</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">confirmed</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="s1">'s'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="s1">'s'</span><span class="p">);</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">sample_users</span><span class="o">`</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">sample_users</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">username</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">nome</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">picture</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sample_users</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">nome</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">picture</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">,</span>    <span class="s1">'Administrador'</span><span class="p">,</span>    <span class="s1">'admin.jpg'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">,</span> <span class="s1">'Test'</span><span class="p">,</span> <span class="s1">'test.jpg'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'other'</span><span class="p">,</span>    <span class="s1">'Other'</span><span class="p">,</span>    <span class="s1">'other.jpg'</span><span class="p">);</span>
+</pre></div>
+
+<ol>
+<li>Then open http://yourserver/orangechatpath/sample in two different browsers.</li>
+</ol><h2>
+<a name="translating-orangechat" class="anchor" href="#translating-orangechat"><span class="octicon octicon-link"></span></a>Translating OrangeChat</h2>
+
+<ol>
+<li>Inside the "orangechat" folder, enter "lang" folder and copy the "en.xml" file to "(your_language_iso_code).xml".</li>
+<li>Translate the strings in the XML tags. There is just a few. Don't worry!</li>
+<li>Enable your language in config.inc.php folder.</li>
+</ol><h2>
+<a name="creating-themes" class="anchor" href="#creating-themes"><span class="octicon octicon-link"></span></a>Creating themes</h2>
+
+<ol>
+<li>In the "themes" folder, copy any of the folders and rename it to your theme name.</li>
+<li>Edit the style.css file as you want.</li>
+<li>Edit the chat.gif file. It's the icon that will appear on the chat bar.</li>
+<li>Optionally, edit the loading.gif image. It's the animation that appears while loading the online users list. If this file doesn't exist, the default one, in the "images" folder, will be used.</li>
+</ol><h2>
+<a name="files-schema" class="anchor" href="#files-schema"><span class="octicon octicon-link"></span></a>Files schema</h2>
+
+<table>
+<thead><tr>
+<th>File</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>index.php</td>
+<td>Does nothing, for while.</td>
+</tr>
+<tr>
+<td>chat.php</td>
+<td>Controls the messages log, message sending and reading.</td>
+</tr>
+<tr>
+<td>chatbar.php</td>
+<td>Gets the online users list.</td>
+</tr>
+<tr>
+<td>common.php</td>
+<td>Common variables, includes and functions.</td>
+</tr>
+<tr>
+<td>config.inc.php</td>
+<td>App configuration.</td>
+</tr>
+<tr>
+<td>integrated_functions.php</td>
+<td>More functions that aren't required to edit.</td>
+</tr>
+<tr>
+<td>integration.php</td>
+<td>Functions and variables to integrate OrangeChat to your app.</td>
+</tr>
+<tr>
+<td>orangecss.php</td>
+<td>Controls the stylesheets.</td>
+</tr>
+<tr>
+<td>orangejs.php</td>
+<td>Controls the Javascripts.</td>
+</tr>
+</tbody>
+</table>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jesobreira">jesobreira</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
