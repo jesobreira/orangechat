@@ -2,7 +2,7 @@ OrangeChat
 ==========
 Simple PHP/Javascript Facebook-like chat widget ([online demo](http://orangechat.gopagoda.com))
 Based in the chat box by [Anant Garg](http://anantgarg.com)
-Integration, themes support and translation support by [Jefrey S. Santos](mailto:jefrey.sobreira@gmail.com)
+Integration, themes support and translation support by [Jefrey S. Santos](http://jefrey.ml)
 
 How to install
 -------------
